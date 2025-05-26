@@ -3,15 +3,14 @@ import AppKit
 
 
 struct ContentView: View {
-    let text: String
+    let images: [ String ]
 
-    let imagePath = "/Users/dylan/Pictures/import/4/DSCF3897.JPG"
 
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
             
-            if let nsImage = NSImage(contentsOfFile: imagePath) {
+            if let nsImage = NSImage(contentsOfFile: images[0]) {
                 Image(nsImage: nsImage)
                     .resizable()
                     .scaledToFit()
@@ -29,7 +28,7 @@ class WindowManager {
     private var window: KeyWindow?
     
     func createWindow(with files: [String]) {
-        let contentView = ContentView(text: files.joined(separator: ", "))
+        let contentView = ContentView(images: files)
         let hostingController = NSHostingController(rootView: contentView)
         let screenFrame = NSScreen.main!.frame
 
