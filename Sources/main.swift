@@ -2,7 +2,12 @@
 
 import AppKit
 
-let stdin = readLine(strippingNewline: true)!
+// let stdin = readLine(strippingnewline: true)!
+
+var stdin = [String]()
+while let line = readLine() {
+    stdin.append(line)
+}
 
 let app = NSApplication.shared
 app.setActivationPolicy(.regular)
